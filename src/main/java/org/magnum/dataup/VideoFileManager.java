@@ -25,8 +25,12 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.util.ArrayList;
+
+import javax.servlet.http.HttpServletResponse;
 
 import org.magnum.dataup.model.Video;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  * This class provides a simple implementation to store video binary
@@ -38,6 +42,7 @@ import org.magnum.dataup.model.Video;
  */
 public class VideoFileManager {
 
+	
 	/**
 	 * This static factory method creates and returns a 
 	 * VideoFileManager object to the caller. Feel free to customize
@@ -46,6 +51,21 @@ public class VideoFileManager {
 	 * @return
 	 * @throws IOException
 	 */
+	
+	 private VideoFileManager videoDataMgr;
+	 
+	// You would need some Controller method to call this...
+	  	public void saveSomeVideo(Video v, MultipartFile videoData) throws IOException {
+	  	     videoDataMgr.saveVideoData(v, videoData.getInputStream());
+	  	}
+	  	
+	  	public void serveSomeVideo(Video v, HttpServletResponse response) throws IOException {
+	  	     // Of course, you would need to send some headers, etc. to the
+	  	     // client too!
+	  	     //  ...
+	  	     videoDataMgr.copyVideoData(v, response.getOutputStream());
+	  	}
+	 
 	public static VideoFileManager get() throws IOException {
 		return new VideoFileManager();
 	}

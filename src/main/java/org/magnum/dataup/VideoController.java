@@ -17,12 +17,26 @@
  */
 package org.magnum.dataup;
 
+import org.magnum.dataup.model.Video;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-public class AnEmptyController {
+public class VideoController   {
 
-	/**
+	 @RequestMapping("/video")
+	public Video getVideo(@RequestParam("video") Video v) { 
+		 return v;
+		
+	}
+	 
+	 public void addVideo(Video v) {
+		 
+	 }
+		/**
 	 * You will need to create one or more Spring controllers to fulfill the
 	 * requirements of the assignment. If you use this file, please rename it
 	 * to something other than "AnEmptyController"

@@ -19,6 +19,7 @@ package org.magnum.dataup;
 
 import javax.servlet.MultipartConfigElement;
 
+import org.magnum.dataup.model.Video;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.context.embedded.MultiPartConfigFactory;
@@ -41,6 +42,9 @@ public class Application {
 
 	// The entry point to the application.
 	public static void main(String[] args) {
+		Video video = Video.create().withContentType("video/mpeg")
+				.withDuration(123).withSubject("Mobile Cloud")
+				.withTitle("Programming Cloud Services for ...").build();
 		// This call tells spring to launch the application and
 		// use the configuration specified in LocalApplication to
 		// configure the application's components.
