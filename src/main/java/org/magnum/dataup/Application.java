@@ -27,6 +27,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
+import retrofit.RestAdapter;
+
 // This annotation tells Spring to auto-wire your application
 @EnableAutoConfiguration
 // This annotation tells Spring to look for controllers, etc.
@@ -37,14 +39,17 @@ import org.springframework.context.annotation.Configuration;
 //for the application.
 @Configuration
 public class Application {
-
-	private static final String MAX_REQUEST_SIZE = "150MB";
+		private static final String MAX_REQUEST_SIZE = "150MB";
 
 	// The entry point to the application.
 	public static void main(String[] args) {
 		Video video = Video.create().withContentType("video/mpeg")
 				.withDuration(123).withSubject("Mobile Cloud")
 				.withTitle("Programming Cloud Services for ...").build();
+		
+		
+		
+		
 		// This call tells spring to launch the application and
 		// use the configuration specified in LocalApplication to
 		// configure the application's components.

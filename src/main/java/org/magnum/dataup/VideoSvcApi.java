@@ -44,6 +44,8 @@ package org.magnum.dataup;
  */
 import java.util.Collection;
 
+import javax.servlet.http.HttpServlet;
+
 import org.magnum.dataup.model.Video;
 import org.magnum.dataup.model.VideoStatus;
 
@@ -126,7 +128,7 @@ import retrofit.mime.TypedFile;
  * @author jules
  *
  */
-public interface VideoSvcApi {
+public interface VideoSvcApi  {
 
 	public static final String DATA_PARAMETER = "data";
 
@@ -157,6 +159,7 @@ public interface VideoSvcApi {
 	 */
 	@POST(VIDEO_SVC_PATH)
 	public Video addVideo(@Body Video v);
+	
 	
 	/**
 	 * This endpoint allows clients to set the mpeg video data for previously

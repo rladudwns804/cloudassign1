@@ -26,6 +26,9 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.atomic.AtomicLong;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -52,18 +55,20 @@ public class VideoFileManager {
 	 * @throws IOException
 	 */
 	
-	 private VideoFileManager videoDataMgr;
+	
+	 
+	 
 	 
 	// You would need some Controller method to call this...
 	  	public void saveSomeVideo(Video v, MultipartFile videoData) throws IOException {
-	  	     videoDataMgr.saveVideoData(v, videoData.getInputStream());
+	  	     saveVideoData(v, videoData.getInputStream());
 	  	}
 	  	
 	  	public void serveSomeVideo(Video v, HttpServletResponse response) throws IOException {
 	  	     // Of course, you would need to send some headers, etc. to the
 	  	     // client too!
 	  	     //  ...
-	  	     videoDataMgr.copyVideoData(v, response.getOutputStream());
+	  	     copyVideoData(v, response.getOutputStream());
 	  	}
 	 
 	public static VideoFileManager get() throws IOException {
@@ -74,7 +79,7 @@ public class VideoFileManager {
 	
 	// The VideoFileManager.get() method should be used
 	// to obtain an instance
-	private VideoFileManager() throws IOException{
+	VideoFileManager() throws IOException{
 		if(!Files.exists(targetDir_)){
 			Files.createDirectories(targetDir_);
 		}
@@ -132,5 +137,9 @@ public class VideoFileManager {
 		Path target = getVideoPath(v);
 		Files.copy(videoData, target, StandardCopyOption.REPLACE_EXISTING);
 	}
+	
+	
+	
+	
 	
 }

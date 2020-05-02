@@ -71,8 +71,8 @@ public class Video {
 	private String location;
 	private String subject;
 	private String contentType;
-	private static final AtomicLong currentId = new AtomicLong(0L);
-	private Map<Long,Video> videos = new HashMap<Long, Video>();
+	
+	
 	
 	@JsonIgnore
 	private String dataUrl;
@@ -147,16 +147,6 @@ public class Video {
 				&& getDuration() == ((Video) obj).getDuration();
 	}
 	
-	public Video save(Video entity) {
-		checkAndSetId(entity);
-		videos.put(entity.getId(), entity);
-		return entity;
-	}
-
-	private void checkAndSetId(Video entity) {
-		if(entity.getId() == 0){
-			entity.setId(currentId.incrementAndGet());
-		}
-	}
+	
 
 }
